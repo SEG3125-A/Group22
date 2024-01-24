@@ -2,6 +2,8 @@
 // This function is called when any of the tab is clicked
 // It is adapted from https://www.w3schools.com/howto/howto_js_tabs.asp
 
+var organic = false
+
 function openInfo(evt, tabName) {
 
 	// Get all elements with class="tabcontent" and hide them
@@ -25,7 +27,7 @@ function openInfo(evt, tabName) {
 
 	
 // generate a checkbox list from a list of products
-// it makes each product name as the label for the checkbos
+// it makes each product name as the label for the checkbox
 
 function populateListProductChoices(slct1, slct2) {
     var s1 = document.getElementById(slct1);
@@ -35,15 +37,24 @@ function populateListProductChoices(slct1, slct2) {
     s2.innerHTML = "";
 		
 	// obtain a reduced list of products based on restrictions
-    var optionArray = restrictListProducts(products, s1.value);
+    var optionArray = restrictListProducts(products, s1.value, organic);
+
+	//Sorting
+	optionArray.sort(function(a, b) {
+		var x = a[1];
+		var y = b[1];
+		return x - y;
+	});
+
+
 
 	// for each item in the array, create a checkbox element, each containing information such as:
 	// <input type="checkbox" name="product" value="Bread">
 	// <label for="Bread">Bread/label><br>
 		
 	for (i = 0; i < optionArray.length; i++) {
-			
-		var productName = optionArray[i];
+		var productName = optionArray[i][0];
+		var price = optionArray[i][1]
 		// create the checkbox and add in HTML DOM
 		var checkbox = document.createElement("input");
 		checkbox.type = "checkbox";
@@ -54,7 +65,7 @@ function populateListProductChoices(slct1, slct2) {
 		// create a label for the checkbox, and also add in HTML DOM
 		var label = document.createElement('label')
 		label.htmlFor = productName;
-		label.appendChild(document.createTextNode(productName));
+		label.appendChild(document.createTextNode(productName + " - $" + price));
 		s2.appendChild(label);
 		
 		// create a breakline node and add in HTML DOM
@@ -90,5 +101,17 @@ function selectedItems(){
 	c.appendChild(para);
 	c.appendChild(document.createTextNode("Total Price is " + getTotalPrice(chosenProducts)));
 		
+}
+
+function setOrganic(){
+	var organicButton = document.getElementById("organic")
+
+	if (organicButton.checked){
+		organic = true
+	}
+	else{
+		organic = false
+	}
+	console.log(organic)
 }
 

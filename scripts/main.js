@@ -35,9 +35,12 @@ function populateListProductChoices(slct1, slct2) {
 	
 	// s2 represents the <div> in the Products tab, which shows the product list, so we first set it empty
     s2.innerHTML = "";
+
+
+	categories = [document.getElementById('checkProduce').checked, document.getElementById('checkBaked').checked,document.getElementById('checkMeat').checked,document.getElementById('checkOther').checked]
 		
 	// obtain a reduced list of products based on restrictions
-    var optionArray = restrictListProducts(products, s1.value, organic);
+    var optionArray = restrictListProducts(products, s1.value, organic, categories);
 
 	//Sorting
 	optionArray.sort(function(a, b) {
@@ -54,7 +57,8 @@ function populateListProductChoices(slct1, slct2) {
 		
 	for (i = 0; i < optionArray.length; i++) {
 		var productName = optionArray[i][0];
-		var price = optionArray[i][1]
+		var price = optionArray[i][1];
+		var image = optionArray[i][2];
 		// create the checkbox and add in HTML DOM
 		var checkbox = document.createElement("input");
 		checkbox.type = "checkbox";
@@ -67,6 +71,13 @@ function populateListProductChoices(slct1, slct2) {
 		label.htmlFor = productName;
 		label.appendChild(document.createTextNode(productName + " - $" + price));
 		s2.appendChild(label);
+
+		// Create image
+		var img = document.createElement('img')
+		img.src = image
+		img.height = '100'
+		s2.appendChild(document.createElement("br"));    
+		s2.appendChild(img)
 		
 		// create a breakline node and add in HTML DOM
 		s2.appendChild(document.createElement("br"));    

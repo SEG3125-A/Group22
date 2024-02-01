@@ -39,9 +39,18 @@
 
 <div id="Products" class="tabcontent">
   <h3>Your targeted products</h3>
+  <div>
+    <input type="checkbox" id='checkProduce' name="categories" value="produce" checked='true' onchange="populateListProductChoices('dietSelect', 'displayProduct')">Produce
+    <input type="checkbox" id='checkBaked' name="categories" value="baked goods" checked='true' onchange="populateListProductChoices('dietSelect', 'displayProduct')">Baked Goods
+    <input type="checkbox" id='checkMeat' name="categories" value="meat" checked='true' onchange="populateListProductChoices('dietSelect', 'displayProduct')">Meat
+    <input type="checkbox" id='checkOther' name="categories" value="other" checked='true' onchange="populateListProductChoices('dietSelect', 'displayProduct')">Other
+  </div>
+    
   <p>We preselected products based on your restrictions.</p>
 	 Choose items to buy:
-	 <div id="displayProduct"></div>
+	 <div id="displayProduct">
+    <image id='productImage'></image>
+   </div>
 	 <button id="addCart" type="button" class="block" onclick="selectedItems()">
 		Add selected items to cart.
 	</button>

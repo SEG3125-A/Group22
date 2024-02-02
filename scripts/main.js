@@ -4,6 +4,9 @@
 
 var organic = false
 
+// Show the current tab, and add an "active" class to the button that opened the tab
+document.getElementById("Client").style.display = "block";
+
 function openInfo(evt, tabName) {
 
 	// Get all elements with class="tabcontent" and hide them
@@ -125,4 +128,21 @@ function setOrganic(){
 	}
 	console.log(organic)
 }
+//code inspired from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapse_sidebar
+function openNav() {
+	document.getElementById("tab").style.width = "250px";
+	document.getElementById("Client").style.marginLeft = "250px";
+	document.getElementById("Products").style.marginLeft = "250px";
+	document.getElementById("Cart").style.marginLeft = "250px";
+	document.getElementById("main").style.marginLeft = "250px";
 
+  }
+  
+function closeNav() {
+	document.getElementById("tab").style.width = "0px";
+	document.getElementById("Client").style.marginLeft= "0px";
+	document.getElementById("Products").style.marginLeft = "0px";
+	document.getElementById("Cart").style.marginLeft = "0px";
+	document.getElementById("main").style.marginLeft = "0px";
+
+  }

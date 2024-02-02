@@ -3,28 +3,32 @@
 <head>
 	<! This style sheet is taken from  https://www.w3schools.com/howto/howto_js_tabs.asp>
 	<link href="styles/style.css" rel="stylesheet" type="text/css">
-    <h1>Panda Grocery Store</h1>
 </head>
 
-<body>
 
 <!-- Tab links, each one with an onclick event associated with it -->
-<div class="tab">
-  <button class="tablinks" onclick="openInfo(event, 'Client')">Client</button>
-  <button class="tablinks" onclick="openInfo(event, 'Products')">Products</button>
-  <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
+<div id="tab" class="tab">
+  <a class="closebtn" onclick="closeNav()">×</a>
+  <button class="tablinks" onclick="openInfo(event, 'Client'),closeNav()">Edit User information</button>
+  <button class="tablinks" onclick="openInfo(event, 'Products'),closeNav(),populateListProductChoices('dietSelect','displayProduct')">View Products</button>
+  <button class="tablinks" onclick="openInfo(event, 'Cart'),closeNav()">Cart</button>
 </div>
 
+<body>
+  <div id="main" class>
+    <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>  
+    <h1 >Panda Grocery Store</h1>
+    <p id="signature">Website designed by Ryan, Marija and Jamal</p>	
+  </div>
 <!-- Tab content -->
 <div id="Client" class="tabcontent">
-  <h3>Client Information</h3>
+  <h3>Change User info</h3>
   <p>Tell us a bit about you.</p>
-	Choose a Category:
+	Please Select Dietary Restrictions:
 	<select id="dietSelect" name="dietSelect" onchange="populateListProductChoices(this.id, 'displayProduct')" multiple>
-	<option value=""></option>
 	<option value="Vegetarian">Vegetarian</option>
     <option value="GlutenFree">GlutenFree</option>
-    <option value="None">None</option>
+    <option value="None" selected>None</option>
 	</select>
     
     <div>
@@ -33,36 +37,35 @@
     <label for="age1">Organic</label><br>
     <input type="radio" id="nonorganic" name="org">
     <label for="age2">Not organic</label><br>  
-    <input type="submit" value="Submit" onclick="setOrganic(), populateListProductChoices('dietSelect', 'displayProduct')">
+    <input type="submit" value="View Products" onclick="setOrganic(), populateListProductChoices('dietSelect', 'displayProduct'),openInfo(event, 'Products')">
     </div>
 </div>
 
 <div id="Products" class="tabcontent">
-  <h3>Your targeted products</h3>
+  <h3>Products for you</h3>
   <div>
+    <p style="margin-left: 1em;">Filters</p>
     <input type="checkbox" id='checkProduce' name="categories" value="produce" checked='true' onchange="populateListProductChoices('dietSelect', 'displayProduct')">Produce
     <input type="checkbox" id='checkBaked' name="categories" value="baked goods" checked='true' onchange="populateListProductChoices('dietSelect', 'displayProduct')">Baked Goods
     <input type="checkbox" id='checkMeat' name="categories" value="meat" checked='true' onchange="populateListProductChoices('dietSelect', 'displayProduct')">Meat
     <input type="checkbox" id='checkOther' name="categories" value="other" checked='true' onchange="populateListProductChoices('dietSelect', 'displayProduct')">Other
   </div>
     
-  <p>We preselected products based on your restrictions.</p>
+  <p>Items are filter based on User Info</p>
 	 Choose items to buy:
 	 <div id="displayProduct">
     <image id='productImage'></image>
    </div>
-	 <button id="addCart" type="button" class="block" onclick="selectedItems()">
-		Add selected items to cart.
-	</button>
+	 <input type="submit" value="Add items to cart." onclick="selectedItems(),openInfo(event, 'Cart')">
+	</input>
 </div>
 
 <div id="Cart" class="tabcontent">
   <h3>Cart</h3>
-  <p>Here is your cart.</p>
   <div id="displayCart"></div>
 </div>
 
-<p id="signature">Website designed by Ryan, Marija and Jamal</p>	
+
 
 <script src="scripts/groceries.js"></script>
 <script src="scripts/main.js"></script>

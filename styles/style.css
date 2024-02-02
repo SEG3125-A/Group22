@@ -1,37 +1,127 @@
 /* This style sheet is taken from  https://www.w3schools.com/howto/howto_js_tabs.asp> */
 
-/* Style the tab */
+/* Style the tab/sidebar */
 .tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+/* This style sheet is taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapse_sidebar
+/* Style the buttons that are used to open the tab content */
+.tab button.tablinks {
+  border: none;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+  background-color: white; 
+  color: black; 
+  border: 2px solid #047baa;
 }
 
-/* Style the buttons that are used to open the tab content */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-}
 
 /* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
+.tab button.tablinks:hover {
+  background-color: #04AA6D;
+  border: 2px solid #04AA6D;
+  color: white;}
 
 /* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
+.tab button:active {
+  background-color: #268cb2;
+  border: 2px solid #047baa;
+
+  color: white;}
+
+.tab .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
 }
 
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .tab {padding-top: 15px;}
+  .tab a {font-size: 18px;}
+}
 /* Style the tab content */
 .tabcontent {
+  transition: margin-left .5s;
+  padding: 16px;
   display: none;
   padding: 6px 12px;
-  border: 1px solid #ccc;
   border-top: none;
+
 }
+
+.tabcontent input[type=submit] {
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  color: white; 
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+
+/* Change background color of buttons on hover */
+.tabcontent input[type=submit]:hover {
+  background-color: #268cb2;
+  color: white;}
+
+/* Create an active/current tablink class */
+.tabcontent input[type=submit]:active {
+  background-color: #268cb2;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  color: white;}
+
+.openbtn {
+  border: none;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+  background-color: #047baa; 
+  color: white; 
+  border: 2px solid #047baa;
+}
+  
+.openbtn:hover {
+  background-color: #04AA6D;
+  border: 2px solid #04AA6D;
+  color: white;
+ }
+
+  #main{
+    transition: margin-left .5s;
+    padding: 16px;
+  }

@@ -105,7 +105,7 @@ function restrictListProducts(prods, restriction, organic, categories) {
 	for (let i=0; i<prods.length; i+=1) {
 		
 		if ((prods[i].category==="Produce" && categories[0]) || (prods[i].category==="Baked Goods" && categories[1]) || (prods[i].category==="Meat" && categories[2]) ||(prods[i].category==="Other" && categories[3])){			
-			if (prods[i].organic == organic){
+			if (prods[i].organic == organic || organic == false){
 				if ((restriction == "Vegetarian") && (prods[i].vegetarian == true)){
 					product_names.push([prods[i].name, prods[i].price, prods[i].image, prods[i].category]);
 				}

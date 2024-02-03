@@ -39,11 +39,11 @@ function populateListProductChoices(slct1, slct2) {
 	// s2 represents the <div> in the Products tab, which shows the product list, so we first set it empty
     s2.innerHTML = "";
 
-
+	maxPrice = document.getElementById('priceRange').value;
 	categories = [document.getElementById('checkProduce').checked, document.getElementById('checkBaked').checked,document.getElementById('checkMeat').checked,document.getElementById('checkOther').checked]
 		
 	// obtain a reduced list of products based on restrictions
-    var optionArray = restrictListProducts(products, s1.value, organic, categories);
+    var optionArray = restrictListProducts(products, s1.value, organic, categories, maxPrice);
 
 	//Sorting
 	optionArray.sort(function(a, b) {
@@ -128,6 +128,8 @@ function setOrganic(){
 	}
 	console.log(organic)
 }
+
+
 //code inspired from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapse_sidebar
 function openNav() {
 	document.getElementById("tab").style.width = "250px";

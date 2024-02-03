@@ -15,30 +15,39 @@
 </div>
 
 <body>
+  <div class="centered-content">
   <div id="main" class>
     <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>  
-    <h1 >Panda Grocery Store</h1>
-    <p id="signature">Website designed by Ryan, Marija and Jamal</p>	
+    <h1>Panda Grocery Store</h1>
   </div>
 <!-- Tab content -->
 <div id="Client" class="tabcontent">
-  <h3>Change User info</h3>
+  <h3>User Information</h3>
   <p>Tell us a bit about you.</p>
-	Please Select Dietary Restrictions:
+	Please Select Dietary Restrictions: <br>
 	<select id="dietSelect" name="dietSelect" onchange="populateListProductChoices(this.id, 'displayProduct')" multiple>
-	<option value="Vegetarian">Vegetarian</option>
+	  <option value="Vegetarian">Vegetarian</option>
     <option value="GlutenFree">GlutenFree</option>
     <option value="None" selected>None</option>
 	</select>
-    
+  <br>
+
+  <div class="slidecontainer">
+    <p>Filter by price:</p>
+    <label for="priceRange">$1</label>
+    <input type="range" id="priceRange" min="1" max="50" value="50">
+    <label for="priceRange">$50</label>
+  </div>
+  <br>
     <div>
-    Only display organic items? <br>
+    What are your organic preferences? <br>
     <input type="radio" id="organic" name="org">
-    <label for="age1">Yes</label><br>
+    <label for="age1">Organic</label><br>
     <input type="radio" id="nonorganic" name="org">
-    <label for="age2">No</label><br>  
+    <label for="age2">Not organic</label><br>  
     <input type="submit" value="View Products" onclick="setOrganic(), populateListProductChoices('dietSelect', 'displayProduct'),openInfo(event, 'Products')">
     </div>
+
 </div>
 
 <div id="Products" class="tabcontent">
@@ -70,5 +79,7 @@
 <script src="scripts/groceries.js"></script>
 <script src="scripts/main.js"></script>
 
+<p id="signature">Website designed by Ryan, Marija and Jamal</p>	
+</div>
 </body>
 </html>
